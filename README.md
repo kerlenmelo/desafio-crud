@@ -169,5 +169,6 @@ Você pode registrar um novo usuário. Após login, será redirecionado automati
 
 Desenvolvido por **Kerlen Melo** 💼  
 Contato: kerlen_1@hotmail.com
-[LinkedIn:](https://www.linkedin.com/in/kerlenmelo/)
+
+[LinkedIn](https://www.linkedin.com/in/kerlenmelo/)
 ---
