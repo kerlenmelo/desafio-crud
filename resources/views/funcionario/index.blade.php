@@ -18,7 +18,7 @@
         @if ($funcionarios->isEmpty())
         <p class="text-gray-500">Nenhum funcionário cadastrado.</p>
         @else
-        <div class="overflow-x-auto">
+        <div>
           <table class="min-w-full divide-y divide-gray-200 text-sm text-left">
             <thead class="bg-gray-50">
               <tr>
@@ -35,7 +35,7 @@
               <tr>
                 <td class="px-4 py-2">{{ $funcionario->nome }}</td>
                 <td class="px-4 py-2">{{ $funcionario->cpf }}</td>
-                <td class="px-4 py-2">{{ \Carbon\Carbon::parse($funcionario->data_nascimento)->format('d/m/Y') }}</td>
+                <td class="px-4 py-2">{{ $funcionario->data_nascimento ? \Carbon\Carbon::parse($funcionario->data_nascimento)->format('d/m/Y') : '-' }}</td>
                 <td class="px-4 py-2">{{ $funcionario->telefone }}</td>
                 <td class="px-4 py-2">{{ $funcionario->genero }}</td>
                 <td class="text-sm text-gray-700">

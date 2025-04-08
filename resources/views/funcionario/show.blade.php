@@ -11,7 +11,7 @@
         <div>
           <p><strong class="text-gray-700">Nome:</strong> {{ $funcionario->nome }}</p>
           <p><strong class="text-gray-700">CPF:</strong> {{ $funcionario->cpf }}</p>
-          <p><strong class="text-gray-700">Data de Nascimento:</strong> {{ \Carbon\Carbon::parse($funcionario->data_nascimento)->format('d/m/Y') }}</p>
+          <p><strong class="text-gray-700">Data de Nascimento:</strong> {{ $funcionario->data_nascimento ? \Carbon\Carbon::parse($funcionario->data_nascimento)->format('d/m/Y') : '-' }}</p>
           <p><strong class="text-gray-700">Telefone:</strong> {{ $funcionario->telefone }}</p>
           <p><strong class="text-gray-700">Gênero:</strong> {{ $funcionario->genero }}</p>
         </div>

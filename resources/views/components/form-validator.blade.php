@@ -13,7 +13,14 @@
 
         if (telefoneInput) {
             telefoneInput.addEventListener("input", function() {
-                this.value = this.value.replace(/\D/g, "").substring(0, 11);
+                const cleaned = this.value.replace(/\D/g, "").substring(0, 11);
+                this.value = cleaned;
+
+                if (cleaned.length > 0 && !/^\d{10,11}$/.test(cleaned)) {
+                    this.setCustomValidity("Telefone inválido. Use 10 ou 11 dígitos.");
+                } else {
+                    this.setCustomValidity("");
+                }
             });
         }
 

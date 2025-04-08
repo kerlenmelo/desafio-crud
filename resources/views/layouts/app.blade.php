@@ -33,6 +33,7 @@
         <main>
             {{ $slot }}
         </main>
+        <x-toaster-hub />
     </div>
     @stack('scripts')
 </body>
