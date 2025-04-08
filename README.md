@@ -1,174 +1,135 @@
 # Desafio CRUD de Funcionários com Autenticação
 
-Este projeto é um desafio técnico da empresa Connecta Tecnologia. E se trata de um projeto **cadastro e gerenciamento de funcionários**, desenvolvido com o framework **Laravel 10** e utiliza o **Laravel Breeze** como starter kit de autenticação.
+Este projeto é um desafio técnico da empresa **Connecta Tecnologia**. Trata-se de uma aplicação web desenvolvida com **Laravel**, que permite o **cadastro e gerenciamento de funcionários**, com autenticação de usuários via **Laravel Breeze**.
 
 ---
 
-## 📋 Funcionalidades
+## 📋 Funcionalidades Atendidas
 
-- Autenticação de usuários (login, registro, logout)
-- Redirecionamento para o painel após login
-- CRUD completo de funcionários:
-  - Cadastro
-  - Listagem
-  - Edição
-  - Visualização detalhada
-  - Exclusão com confirmação via modal
-- Validações de dados com mensagens em **português brasileiro**
-- Layout responsivo com **Tailwind CSS**
+### 1. 🔐 Autenticação de Usuário
+
+-   Registro de novo usuário (nome, e-mail e senha).
+-   Página de login com validação de e-mail e senha.
+-   Apenas usuários autenticados têm acesso ao CRUD de funcionários.
+-   Após o login, o usuário é redirecionado para o painel de gerenciamento de funcionários.
+-   As senhas são criptografadas.
+
+### 2. 🧑‍💼 CRUD de Funcionários
+
+O sistema permite:
+
+-   Criar um novo funcionário
+-   Visualizar todos os funcionários cadastrados
+-   Atualizar dados de um funcionário existente
+-   Excluir funcionários
+
+### 3. 📝 Campos dos Funcionários
+
+Cada funcionário possui os seguintes campos:
+
+-   Nome
+-   CPF
+-   Data de nascimento
+-   Telefone
+-   Gênero
+
+### 4. ✅ Validações
+
+-   CPF: único, obrigatório e validado com formato.
+-   Nome e gênero: obrigatórios.
+-   Telefone: opcional, mas validado se preenchido.
+-   Data de nascimento: opcional, mas deve ser uma data válida.
+
+### 5. 🖥️ Interface
+
+-   Interface clara, responsiva e intuitiva com TailwindCSS.
+-   Tela de login e registro de usuários.
+-   Tabelas com listagem de funcionários.
+-   Formulários de criação e edição bem estruturados.
+-   Modais de confirmação para exclusão.
+
+### 6. 🗃️ Banco de Dados
+
+-   Compatível com **SQLite** (padrão).
+-   Migrations para criação da tabela de usuários e funcionários incluídas.
 
 ---
 
-## 🚀 Tecnologias
+## 🚀 Tecnologias Utilizadas
 
-- PHP ^8.1
-- Laravel ^10
-- Laravel Breeze
-- TailwindCSS
-- SQLite (ou MySQL)
-- Laravel Lang (para tradução de mensagens)
+-   PHP ^8.1
+-   Laravel ^10
+-   Laravel Breeze
+-   Laravel Lang
+-   Livewire Toaster
+-   TailwindCSS
+-   SQLite
+-   Alpine.js
 
 ---
 
-## 💻 Requisitos
+## 💻 Requisitos de Ambiente
 
-Certifique-se de ter os seguintes softwares instalados:
-
-- [PHP 8.1+](https://www.php.net/downloads.php)
-- [Composer](https://getcomposer.org/)
-- [Node.js](https://nodejs.org/) e [npm](https://www.npmjs.com/)
-- Banco de dados **SQLite** (recomendado) ou **MySQL**
+-   PHP 8.1+
+-   Composer
+-   Node.js & npm
+-   SQLite
 
 ---
 
 ## ⚙️ Instalação e Configuração
 
-Siga os passos abaixo para rodar a aplicação localmente:
-
-### 1. Clone o projeto
-
 ```bash
+# Clone o projeto
 git clone https://github.com/kerlenmelo/desafio-crud.git
 cd desafio-crud
-```
 
-### 2. Instale as dependências do PHP e JavaScript
-
-```bash
+# Instale as dependências
 composer install
 npm install
-```
 
-### 3. Crie o arquivo `.env`
-
-```bash
+# Configure o ambiente
 cp .env.example .env
-```
-
-### 4. Gere a chave da aplicação
-
-```bash
 php artisan key:generate
-```
 
-### 5. Configure o banco de dados
-
-#### Opção 1: SQLite (mais simples)
-
-```bash
+# Configure o banco:
 touch database/database.sqlite
-```
 
-No arquivo `.env`, configure:
-
-```env
-DB_CONNECTION=sqlite
-DB_DATABASE=${absolute_path}/database/database.sqlite
-```
-
-#### Opção 2: MySQL (alternativo)
-
-Configure no `.env`:
-
-```env
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=seu_banco
-DB_USERNAME=seu_usuario
-DB_PASSWORD=sua_senha
-```
-
-### 6. Execute as migrations
-
-```bash
+# Rode as migrations
 php artisan migrate
-```
 
-### 7. Compile os assets
-
-```bash
+# Compile os assets
 npm run build
-```
 
-### 8. Rode a aplicação
-
-```bash
+# Rode a aplicação
 php artisan serve
 ```
 
-Acesse [http://localhost:8000](http://localhost:8000)
+Acesse via: [http://localhost:8000](http://localhost:8000)
 
 ---
 
-## 🌐 Idioma da Aplicação
-
-A aplicação utiliza mensagens de validação em **pt-BR**, com auxílio do pacote:
-
-```bash
-composer require laravel-lang/common
-php artisan lang:add pt_BR
-```
-
----
-
-## 🧪 Usuário
-
-Você pode registrar um novo usuário. Após login, será redirecionado automaticamente para o gerenciamento de funcionários.
-
----
-
-## 📂 Estrutura de Pastas Relevantes
+## 📂 Estrutura Relevante
 
 ```
 ├── app/Http/Controllers/
 │   └── FuncionarioController.php
-├── app/Rules/
-│   └── Cpf.php
 ├── resources/views/funcionario/
 │   ├── create.blade.php
 │   ├── edit.blade.php
 │   ├── index.blade.php
 │   └── show.blade.php
 ├── database/migrations/
-│   └── create_funcionarios_table.php
 ```
 
 ---
 
-## 📌 Considerações
+## 🧑‍💼 Autor
 
-- As **senhas dos usuários são criptografadas**.
-- A autenticação e middleware protegem o acesso ao CRUD.
-- As validações são feitas no backend e frontend com mensagens claras.
-- CPF e telefone aceitam apenas entradas válidas e no formato correto.
+Desenvolvido por **Kerlen Melo**  
+📧 kerlen_1@hotmail.com  
+LinkedIn: [LinkedIn](https://www.linkedin.com/in/kerlenmelo/)
 
----
+Repositório: [https://github.com/kerlenmelo/desafio-crud](https://github.com/kerlenmelo/desafio-crud)
 
-## 🧑‍💻 Autor
-
-Desenvolvido por **Kerlen Melo** 💼  
-Contato: kerlen_1@hotmail.com
-
-[LinkedIn](https://www.linkedin.com/in/kerlenmelo/)
 ---
