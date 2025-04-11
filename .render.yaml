@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: laravel-crud
+    runtime: docker
+    plan: free
+    region: oregon
+    buildCommand: "./build.sh"
+    startCommand: "php artisan serve --host 0.0.0.0 --port 10000"
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: APP_KEY
+        value: base64:Q0wTAIUFF2rcGus7SFHslzDbkU3AfU32yYam6xN6hvY=
+      - key: DB_CONNECTION
+        value: sqlite
+      - key: DB_DATABASE
+        value: /opt/render/project/src/database/database.sqlite
