@@ -4,6 +4,11 @@ Este projeto é um desafio técnico da empresa **Connecta Tecnologia**. Trata-se
 
 ---
 
+## 📸 Demonstração
+
+🚀 Acesse a aplicação publicada:
+**https://laravel-crud-kerlen.onrender.com**
+
 ## 📋 Funcionalidades Atendidas
 
 ### 1. 🔐 Autenticação de Usuário
