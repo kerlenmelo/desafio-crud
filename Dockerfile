@@ -43,5 +43,5 @@ RUN chown -R www-data:www-data /var/www \
 # Porta usada pelo artisan serve
 EXPOSE 10000
 
-# Comando de inicialização (aqui está a "lógica do entrypoint")
-CMD sh -c "touch \$DB_DATABASE && php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=10000"
+# Comando de inicialização
+CMD sh -c "mkdir -p \$(dirname \$DB_DATABASE) && touch \$DB_DATABASE && php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=10000"
