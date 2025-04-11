@@ -1,29 +1,36 @@
-# Etapa 1 - Imagem base com PHP, Composer, Node, npm
-FROM laravelsail/php82-composer AS base
+# Imagem base com PHP 8.2 FPM
+FROM php:8.2-fpm
 
-# Instalações adicionais
+# Instala dependências
 RUN apt-get update && apt-get install -y \
     sqlite3 \
     unzip \
     curl \
     libzip-dev \
-    && docker-php-ext-install zip pdo_sqlite
+    libpng-dev \
+    libonig-dev \
+    libxml2-dev \
+    zip \
+    git \
+    nodejs \
+    npm \
+    && docker-php-ext-install pdo pdo_sqlite zip
 
-# Instala Node.js e npm
-RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
-    apt-get install -y nodejs
+# Instala Composer (via imagem oficial)
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Cria diretório do app
+# Cria diretório da aplicação
 WORKDIR /var/www
 
 # Copia arquivos da aplicação
 COPY . .
 
-# Define permissões (ajuste para seu user/app)
-RUN chown -R www-data:www-data /var/www && chmod -R 775 /var/www
+# Ajusta permissões para Laravel
+RUN chown -R www-data:www-data /var/www \
+    && chmod -R 775 /var/www/storage /var/www/bootstrap/cache
 
-# Expõe a porta padrão usada no startCommand do Render
+# Expõe porta usada pelo Laravel serve
 EXPOSE 10000
 
-# Define comando default, sobrescrito no render.yaml
-CMD ["php", "artisan", "serve", "--host", "0.0.0.0", "--port", "10000"]
+# Comando padrão (pode ser sobrescrito no Render)
+CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=10000"]
