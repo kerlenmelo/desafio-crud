@@ -33,18 +33,15 @@ RUN composer install --no-interaction --prefer-dist --optimize-autoloader \
     && npm install \
     && npm run build
 
-# Cria pastas de cache e banco
-RUN mkdir -p storage/framework/{sessions,views,cache} bootstrap/cache \
-    && touch database/database.sqlite \
-    && php artisan key:generate \
-    && php artisan migrate --force
+# Cria pastas necessárias
+RUN mkdir -p storage/framework/{sessions,views,cache} bootstrap/cache
 
-# Permissões para Laravel
+# Permissões
 RUN chown -R www-data:www-data /var/www \
     && chmod -R 775 storage bootstrap/cache
 
 # Porta usada pelo artisan serve
 EXPOSE 10000
 
-# Start padrão usado no Render
-CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=10000"]
+# Comando de inicialização (aqui está a "lógica do entrypoint")
+CMD sh -c "touch \$DB_DATABASE && php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=10000"
