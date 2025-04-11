@@ -16,9 +16,8 @@ RUN apt-get update && apt-get install -y \
     libsqlite3-dev \
     && docker-php-ext-install pdo pdo_sqlite zip bcmath
 
-# Copia Node e npm da imagem anterior
-COPY --from=node /usr/local/bin/node /usr/local/bin/
-COPY --from=node /usr/local/bin/npm /usr/local/bin/
+# Copia instalação completa do Node.js (incluindo npm funcional)
+COPY --from=node /usr/local /usr/local
 
 # Instala Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
