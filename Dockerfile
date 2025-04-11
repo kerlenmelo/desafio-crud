@@ -14,7 +14,7 @@ RUN apt-get update && apt-get install -y \
     libonig-dev \
     libxml2-dev \
     libsqlite3-dev \
-    && docker-php-ext-install pdo pdo_sqlite zip
+    && docker-php-ext-install pdo pdo_sqlite zip bcmath
 
 # Copia Node e npm da imagem anterior
 COPY --from=node /usr/local/bin/node /usr/local/bin/
