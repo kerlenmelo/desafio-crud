@@ -22,9 +22,4 @@ Route::middleware('auth')->group(function () {
     Route::resource('funcionario', FuncionarioController::class);
 });
 
-Route::get('/debug', function () {
-    $manifest = file_get_contents(public_path('build/manifest.json'));
-    return response()->json(json_decode($manifest, true));
-});
-
 require __DIR__ . '/auth.php';
