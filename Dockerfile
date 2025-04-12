@@ -36,9 +36,9 @@ RUN composer install --no-interaction --prefer-dist --optimize-autoloader \
 # Cria pastas necessárias
 RUN mkdir -p storage/framework/{sessions,views,cache} bootstrap/cache
 
-# Permissões
+# Adicionando permissões para as pastas de cache, build e outros diretórios
 RUN chown -R www-data:www-data /var/www \
-    && chmod -R 775 storage bootstrap/cache
+    && chmod -R 775 storage bootstrap/cache public/build
 
 # Porta usada pelo artisan serve
 EXPOSE 10000
