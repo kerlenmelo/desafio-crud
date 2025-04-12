@@ -1,13 +1,13 @@
 # Desafio CRUD de Funcionários com Autenticação
 
-Este projeto é um desafio técnico da empresa **Connecta Tecnologia**. Trata-se de uma aplicação web desenvolvida com **Laravel**, que permite o **cadastro e gerenciamento de funcionários**, com autenticação de usuários via **Laravel Breeze**.
+Este projeto é um desafio técnico de uma empresa. Trata-se de uma aplicação web desenvolvida com **Laravel**, que permite o **cadastro e gerenciamento de funcionários**, com autenticação de usuários via **Laravel Breeze**.
 
 ---
 
 ## 📸 Demonstração
 
 🚀 Acesse a aplicação publicada:
-**https://laravel-crud-kerlen.onrender.com**
+**https://funcionarios-app.onrender.com**
 
 ## 📋 Funcionalidades Atendidas
 
