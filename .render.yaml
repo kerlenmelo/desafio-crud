@@ -13,3 +13,5 @@ services:
         value: sqlite
       - key: DB_DATABASE
         value: /opt/render/project/src/database/database.sqlite
+      - key: VITE_ASSET_URL
+        value: https://funcionarios-app.onrender.com

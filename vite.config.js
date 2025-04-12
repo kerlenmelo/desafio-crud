@@ -8,13 +8,13 @@ export default defineConfig({
             refresh: true,
         }),
     ],
-    base: "/public/",
-    server: {
-        https: true,
-    },
+    base: "/",
     resolve: {
         alias: {
             "/build": process.env.VITE_ASSET_URL || "/build",
         },
+    },
+    server: {
+        https: true,
     },
 });
